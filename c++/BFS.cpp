@@ -43,7 +43,7 @@ vector<Node*> BFSTraversal (vector<Node*> graph, int start = 0) {
 	return order;
 }
 
-void testOne(bool printDebug) {
+bool testOne(bool printDebug) {
 	Node* tree[7];
 
 	for (int i = 0; i < 7; i++) {
@@ -79,9 +79,9 @@ void testOne(bool printDebug) {
 
 	//Traversal of graph is expected to be in alphabetical oder
 	for (int i = 0; i < traversal.size(); i++) {
-		if(!traversal[i]->name == ('A' + i)) {
+		if(traversal[i]->name != ('A' + i)) {
 			success = false;
-			return;
+			return false;
 		}
 	}
 
@@ -89,20 +89,70 @@ void testOne(bool printDebug) {
 	traversal = BFSTraversal(graph, 6);
 	if (traversal.size() > 1 || !traversal[0]->name == 'G') {
 		success = false;
-		return;
+		return false;
 	}
+	return true;
+}
+
+bool testTwo(bool printDebug) {
+	Node* tree[7];
+
+	for (int i = 0; i < 7; i++) {
+		tree[i] = new Node();
+		tree[i]->name = 'A' + i;
+	}
+
+	vector<Node*> graph;
+	tree[0]->children.push_back(tree[1]);
+	tree[0]->children.push_back(tree[2]);
+
+	tree[1]->children.push_back(tree[0]);
+	tree[1]->children.push_back(tree[3]);
+	tree[1]->children.push_back(tree[4]);
+
+	tree[2]->children.push_back(tree[0]);
+	tree[2]->children.push_back(tree[5]);
+	tree[2]->children.push_back(tree[6]);
+
+	tree[3]->children.push_back(tree[1]);
+
+	tree[4]->children.push_back(tree[1]);
+
+	tree[5]->children.push_back(tree[2]);
+
+	tree[6]->children.push_back(tree[2]);
+
+	//tree[6]->children.push_back(tree[1]);
+	//tree[1]->children.push_back(tree[6]);
+
+	for(int i = 0; i < 7; i++) {
+		graph.push_back(tree[i]);
+	}
+
+	vector<Node*> traversal = BFSTraversal(graph, 6);
+
+	
+
+	char answer[] = {'G', 'C', 'A', 'F', 'B', 'D', 'E'};
+
+	for (int i = 0; i < 7; i++) {
+		if (answer[i] != traversal[i]->name) {
+			success = false;
+			return false;
+		}
+	}
+	return true;
 }
 
 int main() {
-	testOne(true);
-	//testTwo(true);
+	if (testOne(true) == false)
+		cout << "FAILED: Test One BFS" << endl;
+	if (testTwo(true) == false)
+		cout << "FAILED: Test Two BFS" << endl;
 	if(!success) {
-		cout << "FAILED: TestBFS" << endl;
 		system("pause");
 		return 1;
 	}
 	else
 		return 0;
-
-	
 }
