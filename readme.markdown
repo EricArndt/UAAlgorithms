@@ -3,6 +3,9 @@
 
 ### The Repository
 
+The repository is structured to mirror how Wikipedia's algorithms are listed: 
+http://en.wikipedia.org/wiki/List_of_algorithms
+
 This git repository will serve to store generic algorithms for programming
 problems and contests. Feel free to modify anything, as long as it is
 productive and purposeful, and help out when possible. 
