@@ -14,7 +14,6 @@ public class MaximumSubarray {
 			if (currentMax > 0) {
 				currentMaxEnd = i;
 				currentMax += list[i];
-
 			}
 			else {
 				currentMax = list[i];
