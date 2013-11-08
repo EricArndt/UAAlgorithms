@@ -9,7 +9,7 @@ public class NaivePrimeTest {
 			return false;
 		}
 		
-		for (long i = 2; i < Math.sqrt((double)n) + 1; ++i) {
+		for (long i = 3; i <= Math.sqrt((double)n) + 1; i += 2) {
 			if (n % i == 0) {
 				return false;
 			}
