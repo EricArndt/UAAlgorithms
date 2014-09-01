@@ -20,15 +20,15 @@ int main() {
 		int count;
 		cin >> count;
 
-		int sweetTartValues[4];
-		map<rollIndices, int> tartScore;
-		vector<int> sweetTartRoll(count);
-		rollIndices rollPosition(0, count - 1);
-
 		// Check for end of solution conditions
 		if (!count) {
 			break;
 		}
+
+		int sweetTartValues[4];
+		map<rollIndices, int> tartScore;
+		vector<int> sweetTartRoll(count);
+		rollIndices rollPosition(0, count - 1);
 
 		// Get the value of each type of tart
 		for (int i = 0; i < 4; ++i) {
@@ -38,7 +38,7 @@ int main() {
 		}
 
 		// Read tart order input 
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < count; ++i) {
 			char temp;
 			cin >> temp;
 			sweetTartRoll[i] = sweetTartValues[temp - 'A'];
