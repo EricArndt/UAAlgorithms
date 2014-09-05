@@ -1,0 +1,30 @@
+TODO(apajx):
+  Style Guide:
+    Spaces and tabs, spaces and functions / scope in general
+    Brackets, placement, etc
+    Naming is hard
+    templates, if and when
+    #define, if and almost-never
+    . . .
+
+  CMake Testing Framework:
+    Still needs improvement, too brittle
+    must have .test directories
+    must have matching names in unit test addition with project name
+    . . .
+
+  Windows Development Environment:
+    Hey, I want to dev on Windows because Linux is scary
+    Oh okay, here emulate linux on your windows box.
+    So you can develop on windows. . .
+    MSYS2, tutorial, etc
+
+  Repository Documentation (Other):
+    Git tutorial? Mission Statement?
+    . . .
+
+  Smoothsort
+
+  More Algorithm Issues
+    Maybe not flood the issue list with possible algorithms
+    BUT, have issues prepared to keep the list populated
