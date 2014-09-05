@@ -1,78 +1,15 @@
-# Shamlessly stolen and modified from Dr. Sutton
-
 # ---------------------------------------------------------------------------- #
-# CMake configuration
+# Setup
 
-cmake_minimum_required(VERSION 2.8)
-
-
-# ---------------------------------------------------------------------------- #
-# Project configuration
-
-# Define the top-level project
-project(SweetTarts CXX)
-enable_testing()
-
-# Compiler config
-set(CMAKE_CXX_FLAGS "-Wall")
 include_directories(.)
 
-# ---------------------------------------------------------------------------- #
-# Build
+project(sample CXX)
 
-add_library(SweetTarts st.cpp)
+add_library(sample sample.cpp)
 
-# ---------------------------------------------------------------------------- #
-# Testing
+add_unit_test(sample increment)
 
-# This needs work, link against arbitrary libraries and number of libraries,
-# not complicated, just lazy.
-
-# This macro will create unit tests for a module.
-macro(add_unit_test mod file)
-  file(COPY ${mod}.test/ DESTINATION ${CMAKE_BINARY_DIR} FILES_MATCHING REGEX .*in)
-  file(COPY ${mod}.test/ DESTINATION ${CMAKE_BINARY_DIR} FILES_MATCHING REGEX .*out)
-  set(tgt ${mod}.${file})
-  add_executable(${tgt} ${mod}.test/${file}.cpp)
-  target_link_libraries(${tgt} SweetTarts)
-  add_test(test.${tgt} ${tgt})
-endmacro()
-
-# Add a test suite.
-add_unit_test(SweetTarts test)
-
-
-# ---------------------------------------------------------------------------- #
-# Submission
-
-# The make_manifest macro creates targets that generate a PDF of your code.
-macro(make_manifest)
-  # Complete the paths to all files
-  set(src "")
-  set(doc "")
-  foreach(i ${ARGV})
-    # Make sure the file has its absolute path.
-    set(f ${CMAKE_CURRENT_SOURCE_DIR}/${i})
-
-    # What kind of file are we talking about?
-    # We're going to process them a little differently.
-    get_filename_component(ext ${i} EXT)
-    if (${ext} STREQUAL ".md")
-      list(APPEND doc ${f})
-    else()
-      list(APPEND src ${f})
-    endif()
-  endforeach()
-
-  # Generate the manifest target
-  set(outdoc "${CMAKE_CURRENT_BINARY_DIR}/doc.html")
-  add_custom_target(manifest
-    COMMAND pandoc ${doc} -o ${outdoc}
-    COMMAND a2ps -Afill -o manifest.ps ${outdoc} ${src}
-    COMMAND ps2pdf manifest.ps)
-endmacro()
-
-# Add files to be submitted and graded.
 make_manifest(
-  st.hpp
+  sample.hpp
+  readme.markdown
 )

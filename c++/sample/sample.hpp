@@ -1,8 +1,6 @@
 #include <iostream>
 
-using namespace std;
-
-void solution(istream& input, ostream& output)
+void increment(std::istream& input, std::ostream& output)
 {
   int x;
   for (int i = 0; i < 10; ++i)
@@ -10,6 +8,6 @@ void solution(istream& input, ostream& output)
     input >> x;
     if (x == 0)
       break;
-    output << (x + 1) << endl;
+    output << (x + 1) << std::endl;
   }
 }

@@ -1,17 +1,19 @@
 #include <fstream>
 #include <sstream>
 #include "test.hpp"
-#include "st.hpp"
+#include "sample.hpp"
 
 void diff_test()
 {
-  std::fstream input("test.in");
-  std::stringstream output;
-  std::fstream solutions("test.out");
+  using namespace std;
 
-  solution(input, output);
+  fstream input("increment.in");
+  stringstream output;
+  fstream solutions("increment.out");
 
-  std::string compare1, compare2;
+  increment(input, output);
+
+  string compare1, compare2;
   while(output >> compare1 and solutions >> compare2)
   {
     if (compare1 != compare2)
