@@ -10,6 +10,6 @@ add_library(sample sample.cpp)
 add_unit_test(sample increment)
 
 make_manifest(
-  sample.hpp
+  sample.cpp
   readme.markdown
 )
