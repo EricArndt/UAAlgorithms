@@ -1,3 +1,5 @@
 #include <iostream>
 
-void increment(std::istream& input, std::ostream& output);
+void increment_problem(std::istream&, std::ostream&);
+
+int increment_algorithm(int);

@@ -24,9 +24,9 @@ set(CMAKE_CXX_FLAGS "-Wall")
 # This macro will create unit tests for a module.
 macro(add_unit_test mod file)
   file(COPY ${mod}.test/
-        DESTINATION ${CMAKE_BINARY_DIR} FILES_MATCHING REGEX .*in)
+        DESTINATION ${CMAKE_BINARY_DIR}/${mod} FILES_MATCHING REGEX .*in)
   file(COPY ${mod}.test/
-        DESTINATION ${CMAKE_BINARY_DIR} FILES_MATCHING REGEX .*out)
+        DESTINATION ${CMAKE_BINARY_DIR}/${mod} FILES_MATCHING REGEX .*out)
   set(tgt ${mod}.${file})
   add_executable(${tgt} ${mod}.test/${file}.cpp)
   target_link_libraries(${tgt} ${mod})
