@@ -1,5 +1,5 @@
 compile_body=''
-for alg in `ls src`; do
+for alg in `find src`; do
 	impl_file="src/$alg/$alg.cpp"
 	test_file="src/$alg/$alg.test.cpp"
 	if [ -f "$impl_file" ] && [ -f "$test_file" ]; then
