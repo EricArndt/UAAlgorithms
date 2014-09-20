@@ -2,17 +2,6 @@
 
 using namespace std;
 
-struct Node {
-	vector<Node*> connections;
-	int value;
-	bool visited;
-
-	Node(int val) {
-		this->visited = false;
-		this->value = val;
-	}
-};
-
 /*
  * arguments are start and end nodes
  * returns length of path to end node
