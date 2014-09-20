@@ -104,7 +104,7 @@ that you **must** label the data files with .in and .out. This is simply a
 fault in the test framework and will be improved later.
 
 If you're working with an algorithm you could, and probably should, follow the
-same pattern. However, you can always write your own funciton and pass it into
+same pattern. However, you can always write your own function and pass it into
 the test function. Something like this:
 
 ```c++
