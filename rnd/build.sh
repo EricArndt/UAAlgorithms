@@ -1,5 +1,6 @@
 compile_body=''
-for alg in `find src`; do
+for d in src/*/; do
+	alg=$(basename $d)
 	impl_file="src/$alg/$alg.cpp"
 	test_file="src/$alg/$alg.test.cpp"
 	if [ -f "$impl_file" ] && [ -f "$test_file" ]; then
@@ -9,4 +10,4 @@ for alg in `find src`; do
 	fi
 done
 
-g++ -Iinclude $compile_body main-test.cpp lib/libgtest.a -o bin/unittest
+g++ -Iinclude -Isrc $compile_body main-test.cpp lib/libgtest.a -o bin/unittest
