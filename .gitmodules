@@ -1,0 +1,3 @@
+[submodule "rnd/lib/googletest"]
+	path = rnd/lib/googletest
+	url = https://github.com/BrandonBrowning/googletest
