@@ -4,16 +4,23 @@ export GTEST_DIR='lib/googletest'
 export GTEST_ARCHIVE="$BUILD_DIR/libgtest.a"
 export GTEST_OBJECT="$BUILD_DIR/gtest-all.o"
 export SOURCE_DIR='src'
+export ROOT_DIR='..'
 
 export start_dir=$(pwd)
 
-build() {
+mkdir -p $BUILD_DIR
+mkdir -p $GTEST_DIR
+mkdir -p $SOURCE_DIR
+
+touch $BUILD_LOG
+
+{
 	echo ""
 	echo Build started $(date)
 
 	echo Updating googletest git source code
-	cd $GTEST_DIR
-	git pull
+	cd $ROOT_DIR
+	git submodule update --init
 	cd $start_dir
 
 	echo Building and linking googletest
@@ -30,12 +37,4 @@ build() {
 		$SOURCE_DIR/main-test.cpp \
 		$GTEST_ARCHIVE \
 		-o test
-}
-
-mkdir -p $BUILD_DIR
-mkdir -p $GTEST_DIR
-mkdir -p $SOURCE_DIR
-
-touch $BUILD_LOG
-
-build >> $BUILD_LOG && ./test
+} >> $BUILD_LOG && ./test
