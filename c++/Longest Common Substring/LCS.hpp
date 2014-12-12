@@ -1,7 +1,7 @@
 #ifndef LCS_HPP
 #define LCSHPP
 
-#include "LCS.cpp"
+#include <iostream>
 #include <string>
 #include <vector>
 

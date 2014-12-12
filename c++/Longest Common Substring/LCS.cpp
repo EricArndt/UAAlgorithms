@@ -1,5 +1,5 @@
-#include "LCS.cpp"
-using namespace;
+#include "LCS.hpp"
+using namespace std;
 
 LCS::LCS(string str1, string str2) : str1(str1), str2(str2), grid(str1.size()+1, vector<int>(str2.size()+1, 0)) { }
 

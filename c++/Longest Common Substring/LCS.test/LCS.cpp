@@ -1,4 +1,4 @@
-#include "LCS.hpp"
+#include "../LCS.hpp"
 #include <string>
 using namespace std;
 
